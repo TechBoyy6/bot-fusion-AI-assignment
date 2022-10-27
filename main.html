@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <div class="container my-3">
+        <h2>User Records</h2>
+        {% if t|length == 0 %}
+        <div class="alert alert-dark" role="alert">
+            No User Available!
+        </div>
+        {% else %}
+        <table class="table my-4">
+            <thead>
+                <tr>
+                    <th scope="col">User Key</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Mobile Number</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in collection %}
+                <tr>
+                    <td>{{user["_id"]}}</td>
+                    <td>{{user["userName"]}}</td>
+                    <td>{{user["userMobile"]}}</td>
+                    <td>
+                        <a href="/update?_id={{user['_id']}}" type="button"
+                            class="btn btn-outline-primary btn-sm m-2">Update</a>
+                            <a href="/delete?_id={{user['_id']}}" type="button"
+                                class="btn btn-outline-danger btn-sm m-2">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+    {% if text != None %}
+        <center>
+            <div class="alert alert-light alert-dismissible fade show" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                    class="bi flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Success:">
+                    <path
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                </svg>
+                <strong>{{text}}</strong>
+                <a href="/" type="button" class="btn-close"></a>
+            </div>
+        </center>
+    {% endif %}
+{% endblock %}

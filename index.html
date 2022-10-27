@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <div class="container my-3">
+        <h2>Add a User</h2>
+        <form action="{{ url_for('create')}}" method="post">
+            <div class="mb-3">
+                <label for="User_key" class="form-label">Enter User Key</label>
+                <input type="text" class="form-control" name="User_key" id="User_key"
+                    placeholder="U101" required />
+            </div>
+            <div class="mb-3">
+                <label for="Username" class="form-label">User Name</label>
+                <input type="text" class="form-control" name="Username" id="Username" placeholder="Elon Musk"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label for="mobile_number" class="form-label">Enter User Mobile Number</label>
+                <input type="text" class="form-control" maxlength="13" name="mobile_number" 
+                    id="mobile_number" placeholder="+918087943052" required />
+            </div>
+            <div class="mb-3">
+                <label for="updateUsername" class="form-label"></label>
+                <input type="text" class="form-control" name="updateUsername" id="updateUsername" value="None"
+                    placeholder="Updated By" hidden />
+            </div>
+            <center>
+                <button type="submit" class="btn btn-dark mx-1">Submit</button> <button type="reset"
+                    class="btn btn-primary">Reset</button>
+            </center>
+        </form>
+        <br />
+    </div>
+    {% endblock %}
