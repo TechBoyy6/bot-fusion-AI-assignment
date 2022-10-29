@@ -46,7 +46,6 @@ def delete():
 def update():
     key = request.values.get("_id")
     user = collection.find_one({"_id": key})
-    print(user)
     if request.method == "POST":
         updatedName = request.form["updated_username"]
         updatedMobile = request.form["updated_mobile"]
